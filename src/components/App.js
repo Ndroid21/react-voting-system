@@ -14,10 +14,23 @@ export default class App extends Component {
         ]
     }
 
+    handleClick = (language) => {
+        const newChanged = { name: language.name, vote: language.vote++ };
+
+        this.setState({
+            ...this.state.languages, newChanged
+        });
+    }
+
     render() {
         return (
             <div>
-                { this.state.languages.map(language => <li>{ language.name }</li>) }
+                { this.state.languages.map(language => {
+                    return <ul>
+                        <li>{ language.name } vote: { language.vote }</li>
+                        <button onClick={() => this.handleClick(language)}>+Vote Me</button>
+                    </ul>
+                }) }
             </div>
         )
     }
