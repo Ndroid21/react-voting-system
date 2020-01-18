@@ -24,12 +24,17 @@ export default class App extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 { this.state.languages.map(language => {
-                    return <ul>
-                        <li>{ language.name } vote: { language.vote }</li>
-                        <button onClick={() => this.handleClick(language)}>+Vote Me</button>
-                    </ul>
+                    return (
+                        <ul className="list-group my-1">
+                            <li className="list-group-item d-flex justify-content-between align-items-center">{ language.name } vote: { language.vote }
+                            <div className="btn-group">
+                                <button className="btn btn-light" onClick={() => this.handleClick(language)}>+Vote Me</button>
+                            </div>
+                            </li>
+                        </ul>
+                    )
                 }) }
             </div>
         )
